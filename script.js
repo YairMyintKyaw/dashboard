@@ -9,6 +9,8 @@ const openedMenu = document.querySelector('.openedMenu');
 // Search Icon and Search Bar
 const searchIcon=document.querySelector('.search')
 const searchBar=document.querySelector('.nav-bar input')
+const backIcon=document.querySelector('.backIcon')
+
 closedMenu.addEventListener('click',()=>{
     
     //make slidebar disappear
@@ -36,32 +38,31 @@ openedMenu.addEventListener('click',()=>{
 
 searchIcon.addEventListener('click',()=>{
     searchBar.style.display='inline';
+    backIcon.style.display='flex'
+    backIcon.style.right=`${searchBar.offsetLeft}px`
+
+    //hide every element except backIcon and search bar
+    displayOrHideElemnts(0);
 })
 
-window.addEventListener('click',(e)=>{
-    if(document.body.offsetWidth<=420 && 
-            e.target !=searchBar &&
-            e.target !=navBar &&
-            checkIsItClicked(e.target,navBar.childNodes) &&
-            e.target.parentElement != searchIcon &&
-            e.target.parentElement.parentElement!= searchIcon){
-        searchBar.style.display='none';
+backIcon.addEventListener('click',()=>{
+    searchBar.style.display='none';
+    backIcon.style.display='none'
+
+    //display every element except backIcon and search bar
+    displayOrHideElemnts(1)
+})
+
+function displayOrHideElemnts(opacity){
+    for(let i=0; i<navBar.childElementCount; i++){
+        let element = navBar.children[i];
+        if(element==searchBar || element==backIcon) continue;
+        else{
+            element.style.opacity=opacity;
+        }
     }
-})
-
-function checkIsItClicked(element, elementList){
-     let isTrue;
-     elementList.forEach((elementInList)=>{
-         if(isTrue==true) return true;
-         else if(element==elementInList){
-             isTrue=false;
-         }
-         else{
-             isTrue=true;
-         }
-     })
-     return isTrue;
 }
+
 
 window.addEventListener('resize',()=>{
     if(document.body.offsetWidth>=420){

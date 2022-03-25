@@ -151,6 +151,11 @@ body{
     align-items: center;
 }
 
+.backIcon{
+    display: none;
+    position: absolute;
+}
+
 /* search bar */
 .nav-bar > input{
     max-width: 600px;
@@ -441,7 +446,13 @@ body{
     .nav-bar>input{
         display: none;
         position: absolute;
-        width: 82%;
+        width: 80%;
+        z-index: 1;
+    }
+    .backIcon{
+        display: none;
+        z-index: 2;
+        
     }
     .nav-bar{
         display: flex;
