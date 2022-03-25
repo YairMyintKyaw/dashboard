@@ -5,6 +5,9 @@ const navBar=document.querySelector('.nav-bar');
 const closedMenu = document.querySelector('.closedMenu');
 const openedMenu = document.querySelector('.openedMenu');
 
+// Search Icon and Search Bar
+const searchIcon=document.querySelector('.search')
+const searchBar=document.querySelector('.nav-bar input')
 closedMenu.addEventListener('click',()=>{
     
     //make slidebar disappear
@@ -28,4 +31,26 @@ openedMenu.addEventListener('click',()=>{
     //hide openedMenu Icon
     openedMenu.style.display='none';
     navBar.style.gridTemplateColumns='auto 3fr auto 1fr'
+})
+
+searchIcon.addEventListener('click',()=>{
+    searchBar.style.display='inline';
+})
+
+window.addEventListener('click',(e)=>{
+    if(document.body.offsetWidth<=420 && 
+            e.target !==searchBar &&
+            e.target!=searchIcon &&
+            e.target.parentElement != searchIcon &&
+            e.target.parentElement.parentElement!= searchIcon){
+        searchBar.style.display='none';
+    }
+})
+
+window.addEventListener('resize',()=>{
+    if(document.body.offsetWidth>=420){
+        searchBar.style.display='inline-block'
+    }else{
+        searchBar.style.display='none'
+    }
 })

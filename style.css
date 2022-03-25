@@ -102,8 +102,9 @@ body{
 /* .nav bar */
 .nav-bar{
     display: grid;
-    grid-template-columns: auto 3fr auto 1fr;
+    grid-template-columns: auto 3fr auto auto;
     align-items: center;
+    position: relative;
 }
 
 
@@ -143,6 +144,11 @@ body{
 .iconContainer.openedMenu .iconify{
     margin:0;
     padding: 4px 4px 0px 4px;
+}
+
+.search{
+    display: flex;
+    align-items: center;
 }
 
 /* search bar */
@@ -434,6 +440,8 @@ body{
     }
     .nav-bar>input{
         display: none;
+        position: absolute;
+        width: 80%;
     }
     .nav-bar{
         display: flex;
