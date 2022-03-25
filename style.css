@@ -441,7 +441,7 @@ body{
     .nav-bar>input{
         display: none;
         position: absolute;
-        width: 80%;
+        width: 82%;
     }
     .nav-bar{
         display: flex;

@@ -1,6 +1,7 @@
 const mainContainer=document.querySelector('.mainContainer');
 const slideBar=document.querySelector('.sliderbar');
 const navBar=document.querySelector('.nav-bar');
+
 // Slidebar Controller
 const closedMenu = document.querySelector('.closedMenu');
 const openedMenu = document.querySelector('.openedMenu');
@@ -39,13 +40,28 @@ searchIcon.addEventListener('click',()=>{
 
 window.addEventListener('click',(e)=>{
     if(document.body.offsetWidth<=420 && 
-            e.target !==searchBar &&
-            e.target!=searchIcon &&
+            e.target !=searchBar &&
+            e.target !=navBar &&
+            checkIsItClicked(e.target,navBar.childNodes) &&
             e.target.parentElement != searchIcon &&
             e.target.parentElement.parentElement!= searchIcon){
         searchBar.style.display='none';
     }
 })
+
+function checkIsItClicked(element, elementList){
+     let isTrue;
+     elementList.forEach((elementInList)=>{
+         if(isTrue==true) return true;
+         else if(element==elementInList){
+             isTrue=false;
+         }
+         else{
+             isTrue=true;
+         }
+     })
+     return isTrue;
+}
 
 window.addEventListener('resize',()=>{
     if(document.body.offsetWidth>=420){
