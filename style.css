@@ -6,7 +6,7 @@
 }
 
 body{
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .mainContainer{
@@ -31,6 +31,10 @@ body{
     justify-items:flex-start;
     background-color: #0284C7;
     padding: 10px;
+    
+    overflow-y: scroll ;
+    overflow-x: hidden;
+    scrollbar-width: thin;
 }
 
 /* contents within sliderbar */
@@ -43,6 +47,10 @@ body{
     margin: 0 10px;
     gap: 10px;
     cursor: pointer;
+}
+
+.sliderbar > div:last-child{
+    margin-bottom: 20px;
 }
 
 /* each small blocks inside slidebar */
@@ -94,7 +102,7 @@ body{
 /* .nav bar */
 .nav-bar{
     display: grid;
-    grid-template-columns: auto 3fr 1fr;
+    grid-template-columns: auto 3fr auto 1fr;
     align-items: center;
 }
 
@@ -363,18 +371,27 @@ body{
 
 @media(max-width:600px){
     .sliderbar{
-        position: absolute;
-        left: -1000px;
-        
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
     }
 
+    .sliderbar > div {
+        width: 100%;
+        padding: 0 calc(10px + 5vmin);
+    }
+
+    .sliderbar > div > div {
+        padding: 5px 0;
+    }
 
     .mainContainer{
         grid-template: repeat(2,auto) 1fr/1fr;
     }
 
     .nav-bar{
-        grid-template-columns: repeat(2,auto) 3fr 1fr;
+        grid-template-columns: repeat(2,auto) 3fr auto 1fr;
     }
 
     .openedMenu.iconContainer{
@@ -391,8 +408,7 @@ body{
     .main-content{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-        background-color: #0284C7;
-
+        background-color: #0284C7;   
     }
     .main-content .projectContainer{
         grid-template-columns: repeat(auto-fit,minmax(200px,400px));
