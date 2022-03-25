@@ -6,7 +6,7 @@
 }
 
 body{
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .mainContainer{
@@ -21,6 +21,7 @@ body{
 /* 
         slidebar
 */
+
 
 .sliderbar{
     grid-row: 1/-1;
@@ -62,16 +63,22 @@ body{
     font-size: 2rem;
 }
 
-.openedMenu{
-    display: none;
-}
+
 
 
 /* icons of sliderbar body */
 .sliderbar .iconify{
     font-size: 1.2rem;
 }
-
+.iconContainer{
+    width: fit-content;
+    border-radius: 100%;
+    display: flex;
+    padding: 4px;
+}
+.iconContainer:hover{
+    background-color: rgba(44, 42, 42, 0.1);
+}
 /* 
         slidebar end
 */
@@ -82,12 +89,15 @@ body{
     background-color: white;
 }
 
+
+
 /* .nav bar */
 .nav-bar{
     display: grid;
     grid-template-columns: auto 3fr 1fr;
     align-items: center;
 }
+
 
 
 /* image */
@@ -111,11 +121,20 @@ body{
 }
 
 /* icons */
-.nav-bar .iconify{
+.nav-bar .iconify,.openedMenu.iconContainer{
     font-size: 1.4rem;
     margin: 15px;
     color: black;
     cursor: pointer;
+}
+
+.openedMenu.iconContainer{
+    display: none;
+}
+
+.iconContainer.openedMenu .iconify{
+    margin:0;
+    padding: 4px 4px 0px 4px;
 }
 
 /* search bar */
@@ -358,7 +377,7 @@ body{
         grid-template-columns: repeat(2,auto) 3fr 1fr;
     }
 
-    .openedMenu{
+    .openedMenu.iconContainer{
         display: inline;
     }
 
