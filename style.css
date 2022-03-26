@@ -6,7 +6,7 @@
 }
 
 body{
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .mainContainer{
@@ -101,9 +101,9 @@ body{
 
 /* .nav bar */
 .nav-bar{
-    display: grid;
-    grid-template-columns: auto 3fr auto auto;
+    display:flex;
     align-items: center;
+    justify-content:space-between;
     position: relative;
 }
 
@@ -116,6 +116,7 @@ body{
     border-radius: 50%;
     cursor: pointer;
     margin-right: 15px;
+    user-select: none;
 }
 
 /* right side */
@@ -123,6 +124,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
 .nav-bar > div:last-child > .iconify {
@@ -153,12 +155,17 @@ body{
 
 .backIcon{
     display: none;
-    position: absolute;
 }
 
 /* search bar */
-.nav-bar > input{
-    max-width: 600px;
+.searchbox{
+    flex: 1;
+    display: flex;
+}
+
+.nav-bar input{
+    flex:1 0 auto;
+    max-width: 80%;
     height: 20px;
     background-color: gainsboro;
     border-radius: 15px;
@@ -197,6 +204,10 @@ body{
 }
 
 /* introduce text */
+.mini-profile > div:nth-child(2) {
+    user-select: none;
+}
+
 .mini-profile > div:nth-child(2) > div:first-child{
     font-size: .7rem;
 }
@@ -237,7 +248,8 @@ body{
     grid-template-rows:200px;
     padding: 15px;
     gap: 10px;
-    overflow: scroll;
+    overflow: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
     box-sizing: border-box;
@@ -321,11 +333,18 @@ body{
     display: grid;
     grid-template-rows: repeat(2,1fr);
     gap: 10px;
+    height: fit-content;
+}
+
+.AnnouncementsAndTrending > div{
+    /* width: 100%; */
+    padding: 10px;
 }
 
 .AnnouncementsAndTrending > div > div{
+    font-weight: 500;
+    font-size: .7rem;
     background-color: white;
-    font-size: .5rem;
     padding: 5px 15px;
     line-height:1.5;
     border-radius: 10px;
@@ -364,8 +383,7 @@ body{
 
 .Trending > div > div:nth-of-type(1){
     color: black;
-    font-weight: 500;
-    font-size: .7rem;
+
 }
 
 .Trending > div > div:last-child{
@@ -401,9 +419,6 @@ body{
         grid-template: repeat(2,auto) 1fr/1fr;
     }
 
-    .nav-bar{
-        grid-template-columns: repeat(2,auto) 3fr auto 1fr;
-    }
 
     .openedMenu.iconContainer{
         display: inline;
@@ -429,6 +444,7 @@ body{
     }
     .AnnouncementsAndTrending>div:first-child{
         margin-top:15px ;
+        padding: 10px;
     }
     .AnnouncementsAndTrending > div > div{
         margin: 15px 0 0 0;
@@ -443,20 +459,11 @@ body{
     .nav-bar>div:last-child>div:last-child{
         display: block;
     }
-    .nav-bar>input{
+    .searchbox{
         display: none;
-        position: absolute;
-        width: 80%;
-        z-index: 1;
     }
     .backIcon{
         display: none;
-        z-index: 2;
-        
-    }
-    .nav-bar{
-        display: flex;
-        justify-content: space-around;
     }
     
     .mini-profile{

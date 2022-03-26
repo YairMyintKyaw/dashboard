@@ -8,7 +8,7 @@ const openedMenu = document.querySelector('.openedMenu');
 
 // Search Icon and Search Bar
 const searchIcon=document.querySelector('.search')
-const searchBar=document.querySelector('.nav-bar input')
+const searchBar=document.querySelector('.searchbox')
 const backIcon=document.querySelector('.backIcon')
 
 closedMenu.addEventListener('click',()=>{
@@ -33,16 +33,15 @@ openedMenu.addEventListener('click',()=>{
 
     //hide openedMenu Icon
     openedMenu.style.display='none';
-    navBar.style.gridTemplateColumns='auto 3fr auto 1fr'
 })
 
 searchIcon.addEventListener('click',()=>{
-    searchBar.style.display='inline';
-    backIcon.style.display='flex'
-    backIcon.style.right=`${searchBar.offsetLeft}px`
+    if(getComputedStyle(searchBar).display =='flex') return ;
+    searchBar.style.display='flex';
+    backIcon.style.display='flex';
 
     //hide every element except backIcon and search bar
-    displayOrHideElemnts(0);
+    displayOrHideElemnts('none');
 })
 
 backIcon.addEventListener('click',()=>{
@@ -50,24 +49,31 @@ backIcon.addEventListener('click',()=>{
     backIcon.style.display='none'
 
     //display every element except backIcon and search bar
-    displayOrHideElemnts(1)
+    displayOrHideElemnts('flex')
 })
 
-function displayOrHideElemnts(opacity){
+function displayOrHideElemnts(displayValue){
     for(let i=0; i<navBar.childElementCount; i++){
         let element = navBar.children[i];
         if(element==searchBar || element==backIcon) continue;
         else{
-            element.style.opacity=opacity;
+            element.style.display=displayValue;
         }
     }
 }
 
 
 window.addEventListener('resize',()=>{
+    // window.reload();
     if(document.body.offsetWidth>=420){
-        searchBar.style.display='inline-block'
+        searchBar.style.display='flex';
+        backIcon.style.display='none';
     }else{
-        searchBar.style.display='none'
+        searchBar.style.display='none';
+        backIcon.style.display='none';
+    }
+    displayOrHideElemnts('flex')
+    if(getComputedStyle(slideBar).display!='none'){
+        openedMenu.style.display='none'
     }
 })
