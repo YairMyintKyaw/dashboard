@@ -42,13 +42,13 @@ searchIcon.addEventListener('click',()=>{
     displayOrHideElemnts('none');
 })
 
-// backIcon.addEventListener('click',()=>{
-//     searchBar.style.display='none';
-//     backIcon.style.display='none'
+backIcon.addEventListener('click',()=>{
+    searchBar.style.display='none';
+    backIcon.style.display='none'
 
-//     //display every element except backIcon and search bar
-//     displayOrHideElemnts('flex')
-// })
+    //display every element except backIcon and search bar
+    displayOrHideElemnts('flex')
+})
 
 function displayOrHideElemnts(displayValue){
     for(let i=0; i<navBar.childElementCount; i++){
