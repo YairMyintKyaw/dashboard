@@ -29,8 +29,6 @@ openedMenu.addEventListener('click',()=>{
     //make slidebar appear
     slideBar.style.display='grid';
 
-    mainContainer.style.gridTemplateColumns='minmax(200px,1fr) 5fr';
-
     //hide openedMenu Icon
     openedMenu.style.display='none';
 })
@@ -44,13 +42,13 @@ searchIcon.addEventListener('click',()=>{
     displayOrHideElemnts('none');
 })
 
-backIcon.addEventListener('click',()=>{
-    searchBar.style.display='none';
-    backIcon.style.display='none'
+// backIcon.addEventListener('click',()=>{
+//     searchBar.style.display='none';
+//     backIcon.style.display='none'
 
-    //display every element except backIcon and search bar
-    displayOrHideElemnts('flex')
-})
+//     //display every element except backIcon and search bar
+//     displayOrHideElemnts('flex')
+// })
 
 function displayOrHideElemnts(displayValue){
     for(let i=0; i<navBar.childElementCount; i++){
