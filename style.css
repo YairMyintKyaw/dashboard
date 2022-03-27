@@ -38,6 +38,8 @@ html{
     overflow-y: scroll ;
     overflow-x: hidden;
     scrollbar-width: thin;
+
+    user-select: none;
 }
 
 /* contents within sliderbar */
