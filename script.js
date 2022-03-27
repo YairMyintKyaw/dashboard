@@ -29,6 +29,7 @@ openedMenu.addEventListener('click',()=>{
     //make slidebar appear
     slideBar.style.display='grid';
 
+    mainContainer.style.gridTemplateColumns='minmax(200px,1fr) 5fr'
     //hide openedMenu Icon
     openedMenu.style.display='none';
 })
@@ -42,9 +43,11 @@ searchIcon.addEventListener('click',()=>{
     displayOrHideElemnts('none');
 })
 
+
+
 backIcon.addEventListener('click',()=>{
     searchBar.style.display='none';
-    backIcon.style.display='none'
+    backIcon.style.display='none';
 
     //display every element except backIcon and search bar
     displayOrHideElemnts('flex')
@@ -66,12 +69,13 @@ window.addEventListener('resize',()=>{
     if(document.body.offsetWidth>=420){
         searchBar.style.display='flex';
         backIcon.style.display='none';
-    }else{
+    }else if(document.body.offsetWidth<=420 && 
+                getComputedStyle(backIcon).display != 'flex'){
         searchBar.style.display='none';
         backIcon.style.display='none';
     }
     displayOrHideElemnts('flex')
     if(getComputedStyle(slideBar).display!='none'){
-        openedMenu.style.display='none'
+        openedMenu.style.display='none';
     }
 })
